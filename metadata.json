@@ -1,0 +1,5 @@
+{
+  "name": "DocuCraft",
+  "description": "A comprehensive topic-to-document generator that creates masterclass documents and exports them to Word (.docx).",
+  "requestFramePermissions": []
+}

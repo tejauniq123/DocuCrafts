@@ -1,0 +1,73 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "A user of the application",
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "string",
+          "description": "The user's unique ID"
+        },
+        "email": {
+          "type": "string",
+          "format": "email",
+          "description": "The user's email address"
+        },
+        "displayName": {
+          "type": "string",
+          "description": "The user's display name"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "When the user was created"
+        }
+      },
+      "required": ["uid", "email", "createdAt"]
+    },
+    "Document": {
+      "title": "Document",
+      "description": "A generated master document",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "The document's unique ID"
+        },
+        "userId": {
+          "type": "string",
+          "description": "The ID of the user who generated the document"
+        },
+        "topic": {
+          "type": "string",
+          "description": "The topic of the document"
+        },
+        "content": {
+          "type": "string",
+          "description": "The generated markdown content"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "When the document was generated"
+        }
+      },
+      "required": ["id", "userId", "topic", "content", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": {
+        "$ref": "#/entities/User"
+      },
+      "description": "Stores user profiles"
+    },
+    "/documents/{documentId}": {
+      "schema": {
+        "$ref": "#/entities/Document"
+      },
+      "description": "Stores generated documents"
+    }
+  }
+}
